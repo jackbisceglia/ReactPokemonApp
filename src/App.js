@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
 import PokemonList from './pokemonList';
-import axios from 'axios';
 import Pagination from './pagination';
+
+import axios from 'axios';
+
+import { Grid, Image, Container } from 'semantic-ui-react'
 
 
 function App() {
@@ -27,23 +31,32 @@ function App() {
   }, [currentPageUrl])
 
   function goToNextPage(){
-    setCurrentPageUrl(nextPageUrl);
+    if(nextPageUrl != null){
+      setCurrentPageUrl(nextPageUrl);
+    }
   }
 
   function goToPrevPage(){
-    setCurrentPageUrl(prevPageUrl);
+    if(prevPageUrl != null){
+      setCurrentPageUrl(prevPageUrl);
+    }
   }
 
   if (loading) return "Loading Pokemon Data..." 
 
   return (
-    <>
-      < PokemonList pokemon={pokemon} />
-      <Pagination 
-        goToNextPage = {nextPageUrl ? goToNextPage : null}
-        goToPrevPage = {prevPageUrl ? goToPrevPage : null}
-      />
-    </>
+    <div style={{ backgroundColor: '#f2f2f2', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <div style={{width: '100%', height: '7.5vh', backgroundColor: '#2b2b2b', marginBottom: '4vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <h1 style={{ color: 'white', fontSize: '2rem' }}>PokeQuick</h1>
+      </div>
+      <Container fluid={false}>
+        <Grid columns={3} centered={true} verticalAlign='middle'>
+          <PokemonList pokemon={pokemon} />
+        </Grid>
+      </Container >
+      <Pagination goToNextPage={goToNextPage} goToPrevPage={goToPrevPage}/>
+      <footer style={{height: '5vh', width: '100vw', backgroundColor: '#2b2b2b'}}></footer>
+    </div>
   );
 }
 
