@@ -5,7 +5,7 @@ import Pagination from './pagination';
 
 import axios from 'axios';
 
-import { Grid, Image, Container } from 'semantic-ui-react'
+import { Grid, Container } from 'semantic-ui-react'
 
 
 function App() {
@@ -46,16 +46,18 @@ function App() {
 
   return (
     <div style={{ backgroundColor: '#f2f2f2', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <div style={{width: '100%', height: '7.5vh', backgroundColor: '#2b2b2b', marginBottom: '4vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <div style={{marginBottom: '6vh', width: '100%', height: '7.5vh', backgroundColor: '#2b2b2b', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <h1 style={{ color: 'white', fontSize: '2rem' }}>PokeQuick</h1>
       </div>
       <Container fluid={false}>
-        <Grid columns={3} centered={true} verticalAlign='middle'>
+        <Grid centered={true} verticalAlign='middle' stackable={true}>
           <PokemonList pokemon={pokemon} />
         </Grid>
       </Container >
       <Pagination goToNextPage={goToNextPage} goToPrevPage={goToPrevPage}/>
-      <footer style={{height: '5vh', width: '100vw', backgroundColor: '#2b2b2b'}}></footer>
+      <footer style={{height: '8vh', width: '100vw', backgroundColor: '#2b2b2b', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <h5 style={{color: 'white'}}>Jack Bisceglia</h5>
+      </footer>
     </div>
   );
 }
