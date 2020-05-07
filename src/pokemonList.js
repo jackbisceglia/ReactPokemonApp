@@ -28,7 +28,11 @@ function PokeCard({ p }) {
                 hp: res.data.stats[5].base_stat,
                 atk: res.data.stats[4].base_stat,
                 def: res.data.stats[3].base_stat,
-                speed: res.data.stats[0].base_stat
+                speed: res.data.stats[0].base_stat,
+                height: res.data.height,
+                weight: res.data.weight,
+                id: res.data.id
+
             })
         })
     }, [])
@@ -48,16 +52,18 @@ function PokeCard({ p }) {
                 <Card.Meta textAlign="center"> HP: {attributes.hp} </Card.Meta>
                 <Card.Description textAlign="center">
                     <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center' }}>
-                        <div style={{marginRight: '5px'}}>
+                        <div style={{marginRight: '0'}}>
                             <p>Attack: {attributes.atk}</p>
                             <p>Defense: {attributes.def}</p>
                             <p>Speed: {attributes.speed}</p>
                         </div>
 
-                        <div style={{marginLeft: '5px'}}>
-                            <p>Attack: {attributes.atk}</p>
-                            <p>Defense: {attributes.def}</p>
-                            <p>Speed: {attributes.speed}</p>
+                        <div style={{height: '80px', width: '2px', backgroundColor: '#e6e6e6', margin: '0 30px'}}></div>
+
+                        <div style={{marginLeft: '0'}}>
+                            <p>Height: {attributes.height}</p>
+                            <p>Weight: {attributes.weight}</p>
+                            <p>ID: {attributes.id}</p>
                         </div>
                     </div>
                 </Card.Description>
